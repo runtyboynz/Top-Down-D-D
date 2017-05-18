@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 		if (groundPlane.Raycast (ray, out rayDistance)); //Gives OUT raydistance then assigns it a variable. Will return true if the ray itersects with the ground plane and will also know length.
 		{
 			Vector3 point = ray.GetPoint (rayDistance); //returns the point of intersection.
-			//Debug.DrawLine (ray.origin, point, Color.red);
+			Debug.DrawLine (ray.origin, point, Color.red);
 			controller.LookAt(point);//Player looks at ray point.
 		}
 
