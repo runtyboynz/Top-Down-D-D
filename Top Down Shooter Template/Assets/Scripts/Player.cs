@@ -5,6 +5,8 @@ using System.Collections;
 [RequireComponent (typeof (WeaponController))]
 public class Player : MonoBehaviour {
 
+	public Transform centerPoint;//To get the character to move with the camera center point.
+
 	public float moveSpeed = 5;
 
 	PlayerController controller;
@@ -24,7 +26,8 @@ public class Player : MonoBehaviour {
 
 		//Next 3 lines set movement of player
 		Vector3 moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical")); //"Raw" takes away any default smoothing (Which is great!!!!)
-		Vector3 moveVelocity = moveInput.normalized * moveSpeed; //"normalized" just gives the direction of the input
+		moveInput = centerPoint.rotation * moveInput; //THIS IS WHERE THE PROBLEM IS!!!!
+		Vector3 moveVelocity = moveInput.normalized * moveSpeed; //"normalized" just gives the direction of the input.
 		controller.Move (moveVelocity);
 
 		//Look Input
