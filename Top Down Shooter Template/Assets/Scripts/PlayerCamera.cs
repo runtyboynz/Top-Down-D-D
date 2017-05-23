@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 
-	public Transform pcCam, pcCharacter, pcCenterPoint;
+	public Transform pcCam, pcCharacter, pcCenterPoint, pcMotionPoint;
 
 	public float centerPointYPosition = 1f;
 
 	private float mouseX, mouseY;//For access.
+	private float keyQ, keyE;//For access.
 	public float camPivotXSpeed = 2f;//Speed of X at which camera pivots when used.
 	public float camPivotYSpeed = 2f;//Speed of Y at which camera pivots when used.
 
@@ -17,7 +18,7 @@ public class PlayerCamera : MonoBehaviour {
 	public float zoomMin = -1f;//Minimum value that camera Z zooms out.
 	public float zoomMax = -10f;//Maxiumum value that camera Z zooms out.
 
-	public float rotationSpeed = 5f;//For SLERPING. ***Not implemented***
+	//public float rotationSpeed = 5f;//For SLERPING (Although needs to be put on PC + PC SCRIPT). ***Not implemented***
 
 	// Use this for initialization
 	void Start () {
@@ -46,7 +47,7 @@ public class PlayerCamera : MonoBehaviour {
 			mouseX += Input.GetAxis ("Mouse X") * camPivotXSpeed;//Axis for x.
 			mouseY -= Input.GetAxis ("Mouse Y") * camPivotYSpeed;//Axis for y.
 		}
-
+			
 		mouseY = Mathf.Clamp (mouseY, -60f, 60f);//creates a min/max clamp for y.
 		pcCam.LookAt (pcCenterPoint);//Main Camera is always looking at center point object.
 		pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX, 0); //RIGHT HERE!!! Change the 0 to Z and you've got something special for the attacking.
@@ -55,6 +56,10 @@ public class PlayerCamera : MonoBehaviour {
 		//ABOVE FROM HERE IS THE POINT TO USE FOR SETTING UP LIGHT/MED/HEAVY ATTACKS!!!
 
 		pcCenterPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y + centerPointYPosition, pcCharacter.position.z);//Makes Center Point follow the PC, effectively making the Camera follow the Center Point.
+
+		//Motion Point, into player movement direction.
+		pcMotionPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y, pcCharacter.position.z);//Makes Motion Point follow the PC.
+		pcMotionPoint.localRotation = Quaternion.Euler (0, mouseX, 0);//Sets up just y rotational directional movement of Motion Point for Movement direction.
 
 		/*if (Input.GetAxisRaw ("Vertical") > 0 | Input.GetAxis ("Vertical") < 0) 
 		{
