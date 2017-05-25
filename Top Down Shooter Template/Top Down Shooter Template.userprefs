@@ -8,7 +8,7 @@
       <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Weapon2.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Weapon1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerCamera.cs" Line="12" Column="40" />
+      <File FileName="Assets\Scripts\PlayerCamera.cs" Line="56" Column="5" />
       <File FileName="Assets\Scripts\PlayerMotion.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

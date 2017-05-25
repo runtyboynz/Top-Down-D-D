@@ -51,6 +51,17 @@ public class PlayerCamera : MonoBehaviour {
 		mouseY = Mathf.Clamp (mouseY, -60f, 60f);//creates a min/max clamp for y.
 		pcCam.LookAt (pcCenterPoint);//Main Camera is always looking at center point object.
 		pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX, 0); //RIGHT HERE!!! Change the 0 to Z and you've got something special for the attacking.
+
+		//For Pivoting with Q and E:
+		if (Input.GetKey ("q"))// Q button push.
+		{
+			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX +1, 0);
+		}
+		if (Input.GetKey ("e"))// Q button push.
+		{
+			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX -1, 0);
+		}
+
 		//QUICK NOTE: Quaternions are used for rotation instead of Vector3s.
 
 		//ABOVE FROM HERE IS THE POINT TO USE FOR SETTING UP LIGHT/MED/HEAVY ATTACKS!!!
