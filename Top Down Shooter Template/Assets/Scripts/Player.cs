@@ -6,6 +6,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public Transform motionPoint;//To get the character to move with the camera center point, aka camera.
+	public Transform topDownAimer;//For Object to follow ray point.
 
 	public float moveSpeed = 5;
 
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour {
 
 		//Next 3 lines set movement of player
 		Vector3 moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical")); //"Raw" takes away any default smoothing (Which is great!!!!)
-		moveInput = motionPoint.rotation * moveInput; //THIS IS WHERE THE PROBLEM IS!!!!
+		moveInput = motionPoint.rotation * moveInput; //Connects with Motion point object for setting up movement with camera correctly.
 		Vector3 moveVelocity = moveInput.normalized * moveSpeed; //"normalized" just gives the direction of the input.
 		controller.Move (moveVelocity);
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour {
 			Vector3 point = ray.GetPoint (rayDistance); //returns the point of intersection.
 			Debug.DrawLine (ray.origin, point, Color.red);
 			controller.LookAt(point);//Player looks at ray point.
+			topDownAimer.position = ray.GetPoint (rayDistance);
 		}
 
 		//Weapon Right Hand Input

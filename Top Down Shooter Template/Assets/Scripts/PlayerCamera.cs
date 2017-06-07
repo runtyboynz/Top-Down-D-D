@@ -55,11 +55,11 @@ public class PlayerCamera : MonoBehaviour {
 		//For Pivoting with Q and E:
 		if (Input.GetKey ("q"))// Q button push.
 		{
-			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX +1, 0);
+			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX += 0.75f * camPivotXSpeed, 0);
 		}
 		if (Input.GetKey ("e"))// Q button push.
 		{
-			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX -1, 0);
+			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX -= 0.75f * camPivotXSpeed, 0);
 		}
 
 		//QUICK NOTE: Quaternions are used for rotation instead of Vector3s.
