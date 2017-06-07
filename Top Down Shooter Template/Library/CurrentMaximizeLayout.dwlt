@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 3289
+  controlID: 2069
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 3255
+  controlID: 2005
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -179,14 +179,14 @@ MonoBehaviour:
     width: 885
     height: 386
   m_SceneLighting: 0
-  lastFramingTime: 3596.6242565782695
+  lastFramingTime: 457.5620406337618
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.68936145, y: 0.635286, z: -0.33724844}
+    m_Target: {x: -0.39455175, y: 1.3445235, z: -0.65025705}
     speed: 2
-    m_Value: {x: -0.68936145, y: 0.635286, z: -0.33724844}
+    m_Value: {x: -0.39455175, y: 1.3445235, z: -0.65025705}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -213,9 +213,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.9575424
+    m_Target: 4.7157106
     speed: 2
-    m_Value: 2.9575424
+    m_Value: 4.7157106
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 3290
+  controlID: 2070
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -400,9 +400,9 @@ MonoBehaviour:
     height: 405
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e62e0000
-    m_LastClickedID: 12006
-    m_ExpandedIDs: e6fbffff00000000d22e0000e62e0000582f0000
+    m_SelectedIDs: 6a2f0000
+    m_LastClickedID: 12138
+    m_ExpandedIDs: e6fbffff00000000ee2e00006a2f0000722f00007a2f00009a2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -487,19 +487,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/PC, Camera
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/PC, Camera
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Game Design\D&D game\Top Down Shooter Template
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 354}
-    m_SelectedIDs: 06290000
-    m_LastClickedID: 10502
-    m_ExpandedIDs: 000000008e26000004270000422700004c28000064280000302b0000b62c0000662d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 982a0000
+    m_LastClickedID: 10904
+    m_ExpandedIDs: 000000008e260000422700004c2800006428000006290000342b0000ba2c00006a2d0000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -527,7 +527,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008e26000004270000422700004c28000064280000302b0000b62c0000662d000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000008e260000422700004c2800006428000006290000342b0000ba2c00006a2d0000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -552,8 +552,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: e62e0000
-    m_LastClickedInstanceID: 12006
+    m_SelectedInstanceIDs: 6a2f0000
+    m_LastClickedInstanceID: 12138
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: ce1c0000f21c0000381c0000321e0000fe49ffff9412fcff6aaaffff04a4ffff3c2200009697feffa2240000be24000000000000
     m_RenameOverlay:
@@ -634,7 +634,7 @@ MonoBehaviour:
     y: 101
     width: 529
     height: 909
-  m_ScrollPosition: {x: 0, y: 120}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 145
