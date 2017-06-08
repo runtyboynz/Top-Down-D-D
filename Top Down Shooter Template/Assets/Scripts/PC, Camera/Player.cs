@@ -48,11 +48,9 @@ public class Player : MonoBehaviour
 
 			//AIMING IN CLOSE COMBAT: Here we use two game objects to measure the x,y,z distance for how large/small your attack will be.
 			farPointAimerOrigin.LookAt (motionPoint);//looks at player/motion/center point
-			farPointAimerOrigin.localRotation = Quaternion.Euler (0,farPointAimerOrigin.localRotation.y,0);//stops object from tilting when closer to player.
 
 			farPointAimerReach.position = ray.GetPoint (rayDistance);//Makes Reach Object follow mouse/camera ray.
 			farPointAimerReach.LookAt (motionPoint);//looks at player/motion/center point
-			farPointAimerReach.localRotation = Quaternion.Euler (0,farPointAimerReach.localRotation.y,0);//stops object from tilting when closer to player.
 
 			//SECONDARY RAY: For Finishing up Combat mechanics + Enabling 1st Person.
 			closePointAim.LookAt (farPointAimerReach.position);
@@ -63,6 +61,8 @@ public class Player : MonoBehaviour
 		if (Input.GetMouseButtonDown(1))//If right mouse button is clicked (For Aiming Origin and Reach Gameobjects to register)
 		{
 			farPointAimerOrigin.transform.position = new Vector3 (farPointAimerReach.transform.position.x, farPointAimerReach.transform.position.y, farPointAimerReach.transform.position.z);
+			farPointAimerOrigin.localRotation = Quaternion.Euler (0,farPointAimerOrigin.localRotation.y,0);//stops object from tilting when closer to player.
+			farPointAimerReach.localRotation = Quaternion.Euler (0,farPointAimerReach.localRotation.y,0);//stops object from tilting when closer to player.
 			//^^Sends Origin Gameobject to Reach Object position to measure the distance so Reach Object can measure how far away it moves from the origin point^^.
 		}
 

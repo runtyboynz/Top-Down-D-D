@@ -13,12 +13,27 @@ public class HandMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		handMovementRH.LookAt (farPointAimerReach);
-		handMovementLH.LookAt (farPointAimerReach);
+		//handMovementRH.LookAt (combatAimer);
+		//handMovementLH.LookAt (combatAimer);
 
 				if (Input.GetMouseButton(1))//If right mouse button is pushed down, shoot 
 		{
-			handMovementRH.transform.localPosition = new Vector3 (farPointAimerReach.transform.localPosition.x, farPointAimerReach.transform.localPosition.y, farPointAimerReach.transform.localPosition.z);
+			float x = -farPointAimerReach.transform.localPosition.x;
+			float y = -farPointAimerReach.transform.localPosition.z;
+			float z = 0;
+
+			x = Mathf.Clamp (x, -0.5f, 0.5f);
+			y = Mathf.Clamp (y, -0.5f, 0.5f);
+			z = Mathf.Clamp (z, -0.5f, 0f);
+
+			if (x > 0.1f) 
+			{
+				z += -0.1f;
+			}
+
+				
+			handMovementRH.transform.localPosition = new Vector3 (x, y, z);
+			//handMovementRH.localRotation = Quaternion.Euler (0,farPointAimerReach.localRotation.y,0);
 		}
 				if (Input.GetMouseButton(0))//If left mouse button is pushed down, shoot 
 		{

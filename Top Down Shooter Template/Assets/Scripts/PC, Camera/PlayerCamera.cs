@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour {
 
 	public Transform pcCam, pcCharacter, pcCenterPoint, pcMotionPoint;
 
-	public float centerPointYPosition = 1f;
+	public float centerPointYPosition = 1.75f;
 
 	private float mouseX, mouseY;//For access.
 	private float keyQ, keyE;//For access.
@@ -48,7 +48,7 @@ public class PlayerCamera : MonoBehaviour {
 			mouseY -= Input.GetAxis ("Mouse Y") * camPivotYSpeed;//Axis for y.
 		}
 			
-		mouseY = Mathf.Clamp (mouseY, -60f, 60f);//creates a min/max clamp for y.
+		mouseY = Mathf.Clamp (mouseY, -60f, 75f);//creates a min/max clamp for y.
 		pcCam.LookAt (pcCenterPoint);//Main Camera is always looking at center point object.
 		pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX, 0); //RIGHT HERE!!! Change the 0 to Z and you've got something special for the attacking.
 
