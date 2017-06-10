@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Combat\HandMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\Combat\HandMovement.cs" Line="31" Column="8" />
+      <File FileName="Assets\Scripts\Combat\HandMovement.cs" Line="44" Column="3" />
       <File FileName="Assets\Scripts\PC, Camera\Player.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PC, Camera\PlayerCamera.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PC, Camera\PlayerController.cs" Line="1" Column="1" />
