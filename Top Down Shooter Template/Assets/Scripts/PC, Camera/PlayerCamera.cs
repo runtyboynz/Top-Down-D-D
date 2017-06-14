@@ -7,7 +7,6 @@ public class PlayerCamera : MonoBehaviour {
 	public Transform pcCam, pcCharacter, pcCenterPoint, pcMotionPoint;
 
 	public float centerPointYPosition = 1.75f;
-	public float motionPointYPosition = 1.0f;
 
 	private float mouseX, mouseY;//For access.
 	private float keyQ, keyE;//For access.
@@ -70,7 +69,7 @@ public class PlayerCamera : MonoBehaviour {
 		pcCenterPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y + centerPointYPosition, pcCharacter.position.z);//Makes Center Point follow the PC, effectively making the Camera follow the Center Point.
 
 		//Motion Point, into player movement direction.
-		pcMotionPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y + motionPointYPosition, pcCharacter.position.z);//Makes Motion Point follow the PC.
+		pcMotionPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y, pcCharacter.position.z);//Makes Motion Point follow the PC.
 		pcMotionPoint.localRotation = Quaternion.Euler (0, mouseX, 0);//Sets up just y rotational directional movement of Motion Point for Movement direction.
 
 		/*if (Input.GetAxisRaw ("Vertical") > 0 | Input.GetAxis ("Vertical") < 0) 

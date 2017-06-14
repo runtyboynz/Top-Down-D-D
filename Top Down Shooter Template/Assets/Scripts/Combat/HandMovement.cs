@@ -13,8 +13,8 @@ public class HandMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		handMovementRH.LookAt (combatAimer);
-		handMovementLH.LookAt (combatAimer);
+		//handMovementRH.LookAt (combatAimer);
+		//handMovementLH.LookAt (combatAimer);
 
 				if (Input.GetMouseButton(1))//If right mouse button is pushed down, shoot 
 		{
@@ -27,17 +27,17 @@ public class HandMovement : MonoBehaviour
 			y = Mathf.Clamp (y, -0.35f, 0.25f);
 			z = Mathf.Clamp (z, -0.4f, 0f);
 
-			if (x > 0.1f) 
+			if (x > 0.01f) 
 			{
 				z -= x;
 			}
 
-			 if (x < -0.1f) 
+			 if (x < -0.01f) 
 			{
 				z -= -x;
 			}
 		
-			if (y > 0.1f) 
+			if (y > 0.01f) 
 			{
 				z -= y;
 				//Debug.Log ("z: " + z);
@@ -61,17 +61,17 @@ public class HandMovement : MonoBehaviour
 			y = Mathf.Clamp (y, -0.35f, 0.25f);
 			z = Mathf.Clamp (z, -0.4f, 0f);
 
-			if (x > 0.1f) 
+			if (x > 0.01f) 
 			{
 				z -= x;
 			}
 
-			if (x < -0.1f) 
+			if (x < -0.01f) 
 			{
 				z -= -x;
 			}
 
-			if (y > 0.1f) 
+			if (y > 0.01f) 
 			{
 				z -= y;
 				//Debug.Log ("z: " + z);

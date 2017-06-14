@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
 			farPointAimerReachLH.LookAt (motionPoint);//looks at player/motion/center point LH
 
 			//SECONDARY RAY: For Finishing up Combat mechanics + Enabling 1st Person.
-			closePointAim.LookAt (farPointAimerReachRH);//Makes Hands/attacks aim at the combat aimer which it will reach/aim at/to.
+			closePointAim.LookAt (farPointAimerReachRH);//Makes Hands/attacks aim at the combat aimer reach which it will reach/aim at/to.
 		}
 
 
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 		if (Input.GetMouseButton(1))//If right mouse button is pushed down, shoot 
 		{
 			farPointAimerReachRH.transform.position = new Vector3 (farPointAimerReachRH.transform.position.x, farPointAimerReachRH.transform.position.y - farPointDefaultAimerReachY, farPointAimerReachRH.transform.position.z);//Resets Mouse Aim Sphere to default Y position RH.
-			closePointAim.LookAt (farPointAimerReachRH.position);//Makes Hands/attacks aim at the combat aimer which it will reach/aim at/to.
+			farPointAimerReachRH.localRotation = Quaternion.Euler (0,farPointAimerReachRH.localRotation.y,0);//stops object from tilting when closer to player.
 			weaponController.ShootRH ();
 		}
 
@@ -82,7 +82,6 @@ public class Player : MonoBehaviour
 		{
 			farPointAimerOriginRH.transform.position = new Vector3 (farPointAimerReachRH.transform.position.x, farPointAimerReachRH.transform.position.y, farPointAimerReachRH.transform.position.z);//Sets Origin Aimer at the exact point Reach aim is when mouse is pushed down.
 			farPointAimerOriginRH.localRotation = Quaternion.Euler (0,farPointAimerOriginRH.localRotation.y,0);//stops object from tilting when closer to player.
-			farPointAimerReachRH.localRotation = Quaternion.Euler (0,farPointAimerReachRH.localRotation.y,0);//stops object from tilting when closer to player.
 			//^^Sends Origin Gameobject to Reach Object position to measure the distance so Reach Object can measure how far away it moves from the origin point^^.
 		}
 
@@ -97,7 +96,7 @@ public class Player : MonoBehaviour
 		if (Input.GetMouseButton(0))//If left mouse button is pushed down, shoot 
 		{
 			farPointAimerReachLH.transform.position = new Vector3 (farPointAimerReachLH.transform.position.x, farPointAimerReachLH.transform.position.y - farPointDefaultAimerReachY, farPointAimerReachLH.transform.position.z);//Resets Mouse Aim Sphere to default Y position LH.
-			closePointAim.LookAt (farPointAimerReachLH.position);//Makes Hands/attacks aim at the combat aimer which it will reach/aim at/to.
+			farPointAimerReachLH.localRotation = Quaternion.Euler (0,farPointAimerReachLH.localRotation.y,0);//stops object from tilting when closer to player.
 			weaponController.ShootLH ();
 		}
 
@@ -105,7 +104,6 @@ public class Player : MonoBehaviour
 		{
 			farPointAimerOriginLH.transform.position = new Vector3 (farPointAimerReachLH.transform.position.x, farPointAimerReachLH.transform.position.y, farPointAimerReachLH.transform.position.z);//Sets Origin Aimer at the exact point Reach aim is when mouse is pushed down.
 			farPointAimerOriginLH.localRotation = Quaternion.Euler (0,farPointAimerOriginLH.localRotation.y,0);//stops object from tilting when closer to player.
-			farPointAimerReachLH.localRotation = Quaternion.Euler (0,farPointAimerReachLH.localRotation.y,0);//stops object from tilting when closer to player.
 			//^^Sends Origin Gameobject to Reach Object position to measure the distance so Reach Object can measure how far away it moves from the origin point^^.
 		}
 
