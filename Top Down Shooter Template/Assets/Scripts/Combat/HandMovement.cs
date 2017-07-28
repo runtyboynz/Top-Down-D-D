@@ -18,70 +18,82 @@ public class HandMovement : MonoBehaviour
 
 				if (Input.GetMouseButton(1))//If right mouse button is pushed down, shoot 
 		{
-			float x = -farPointAimerReachRH.transform.localPosition.x / 6;//moves opposite of x
-			float y = -farPointAimerReachRH.transform.localPosition.z / 6;//z axis moves on the y axis opposingly
+			float x = -farPointAimerReachRH.transform.localPosition.x / 8;//moves opposite of x
+			float y = -farPointAimerReachRH.transform.localPosition.z / 8;//z axis moves on the y axis opposingly
 			float z = 0;//default. The below equations make it move with the above axis.
 
 			//Sets restrictions for hand/arm movement distance.
 			x = Mathf.Clamp (x, -0.4f, 0.4f);
 			y = Mathf.Clamp (y, -0.35f, 0.25f);
-			z = Mathf.Clamp (z, -0.4f, 0f);
 
-			if (x > 0.01f) 
+			if (x > 0.01f) //right
 			{
 				z -= x;
 			}
 
-			 if (x < -0.01f) 
+			if (x < -0.01f) //left
 			{
 				z -= -x;
 			}
-		
-			if (y > 0.01f) 
+
+			if (y > 0.01f) //up
 			{
 				z -= y;
 				//Debug.Log ("z: " + z);
 			}
-/*
-			if (y < -0.1f) 
+
+			if (y < -0.01f) //down
 			{
 				z -= -y;
 			}
-*/
+			//below = clamping -z.
+			if (z < -0.4f) 
+			{
+				z = -0.4f;
+			}
+
 			handMovementRH.transform.localPosition = new Vector3 (x, y, z);//Sets up the new variable numbers that the hand movement will move along with mouse movement.
 		}
 				if (Input.GetMouseButton(0))//If left mouse button is pushed down, shoot 
 		{
-			float x = -farPointAimerReachLH.transform.localPosition.x / 6;//moves opposite of x
-			float y = -farPointAimerReachLH.transform.localPosition.z / 6;//z axis moves on the y axis opposingly
+			float x = -farPointAimerReachLH.transform.localPosition.x / 8;//moves opposite of x
+			float y = -farPointAimerReachLH.transform.localPosition.z / 8;//z axis moves on the y axis opposingly
 			float z = 0;//default. The below equations make it move with the above axis.
+
+
 
 			//Sets restrictions for hand/arm movement distance.
 			x = Mathf.Clamp (x, -0.4f, 0.4f);
 			y = Mathf.Clamp (y, -0.35f, 0.25f);
-			z = Mathf.Clamp (z, -0.4f, 0f);
 
-			if (x > 0.01f) 
+			if (x > 0.01f) //right
 			{
 				z -= x;
+				//y -= -y + 0.01f;//experimental
 			}
 
-			if (x < -0.01f) 
+			if (x < -0.01f) //left
 			{
 				z -= -x;
+				//y -= -y + 0.01f;//experimental
 			}
 
-			if (y > 0.01f) 
+			if (y > 0.01f) //up
 			{
 				z -= y;
 				//Debug.Log ("z: " + z);
 			}
-			/*
-			if (y < -0.1f) 
+
+			if (y < -0.01f) //down
 			{
 				z -= -y;
 			}
-*/
+			//below = clamping -z.
+			if (z < -0.4f) 
+			{
+				z = -0.4f;
+			}
+
 			handMovementLH.transform.localPosition = new Vector3 (x, y, z);//Sets up the new variable numbers that the hand movement will move along with mouse movement.
 		}
 

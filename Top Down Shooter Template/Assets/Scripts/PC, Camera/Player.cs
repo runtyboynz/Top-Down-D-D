@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
 	public Transform closePointAim;//To register close attacks.
 	public Transform combatAimer;//The 1st/3rd Person Sphere that pc aims/reaches at/to when attacking.
 
+	//public Plane thirdPersonPlane;
+	//public Plane firstPersonPlane;
+	public RaycastHit rayHitPcLook; //Ray that collides with in-game colliders for pc to look towards and interact with.
+	//public RaycastHit rayHitPcAttack; //Ray that collides with Quad to work out the attack direction.
+
 	public float moveSpeed = 5;
 
 	PlayerController controller;
@@ -42,21 +47,19 @@ public class Player : MonoBehaviour
 
 		//Raycast to make player look in direction. 
 		Ray ray = viewCamera.ScreenPointToRay (Input.mousePosition); //Gives screen position (mouse position), return a ray from the camera to that position to infinity.
-		Plane groundPlane = new Plane (Vector3.up,Vector3.zero);//Generates a plane for mouse to use
-		float rayDistance;
 
-		if (groundPlane.Raycast (ray, out rayDistance)); //Gives OUT raydistance then assigns it a variable. Will return true if the ray itersects with the ground plane and will also know length.
+		if (Physics.Raycast (ray, out rayHitPcLook)) //Gives OUT raydistance then assigns it a variable. Will return true if the ray itersects with a collider and will also know length.
 		{
-			Vector3 point = ray.GetPoint (rayDistance); //returns the point of intersection.
-			Debug.DrawLine (ray.origin, point, Color.red);
-			controller.LookAt(point);//Player looks at ray point.
+			
+			Debug.DrawLine (ray.origin, rayHitPcLook.point, Color.red);
+			controller.LookAt(rayHitPcLook.point);//Player looks at ray point.
 
 			//AIMING IN CLOSE COMBAT: Here we use two game objects to measure the x,y,z distance for how large/small your attack will be.
 			farPointAimerOriginRH.LookAt (motionPoint);//looks at player/motion/center point RH
 			farPointAimerOriginLH.LookAt (motionPoint);//looks at player/motion/center point LH
 
-			farPointAimerReachRH.position = ray.GetPoint (rayDistance);//Makes Reach Object follow mouse/camera ray RH.
-			farPointAimerReachLH.position = ray.GetPoint (rayDistance);//Makes Reach Object follow mouse/camera ray LH.
+			farPointAimerReachRH.position = rayHitPcLook.point;//Makes Reach Object follow mouse/camera ray RH.
+			farPointAimerReachLH.position = rayHitPcLook.point;//Makes Reach Object follow mouse/camera ray LH.
 
 			farPointAimerReachRH.transform.position = new Vector3 (farPointAimerReachRH.transform.position.x, farPointAimerReachRH.transform.position.y + farPointDefaultAimerReachY, farPointAimerReachRH.transform.position.z);//Sets Mouse Aim Reach at higher Y, so he looks upward while freelooking RH.
 			farPointAimerReachLH.transform.position = new Vector3 (farPointAimerReachLH.transform.position.x, farPointAimerReachLH.transform.position.y + farPointDefaultAimerReachY, farPointAimerReachLH.transform.position.z);//Sets Mouse Aim Reach at higher Y, so he looks upward while freelooking LH.
@@ -113,3 +116,23 @@ public class Player : MonoBehaviour
 		}
 	}
 }
+
+//private void SendRayToPlayer () {
+	/*
+  RaycastHit[] hits;
+  Vector3 rayDirection;
+
+    hits = Physics.RaycastAll (transform.position, rayDirection);
+
+    for (int i = 0; i < hits.Length; i++) {
+
+     RaycastHit hit = hits [i];
+
+     if (hit.transform.tag == "ignorePc1Collider") {
+      panelScript = hit.transform.GetComponent<PanelPieceScript> ();
+      panelScript.panelGoTransparent = true;
+     }
+    }
+   }
+  }
+ */
