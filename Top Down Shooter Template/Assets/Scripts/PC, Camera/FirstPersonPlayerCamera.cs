@@ -4,69 +4,37 @@ using UnityEngine;
 
 public class FirstPersonPlayerCamera : MonoBehaviour {
 
+	private Player playerScript;
+
 	public Transform pcCam, pcCharacter, pcCenterPoint, pcMotionPoint;
 
 	public float centerPointYPosition = 1.675f;
 
 	private float mouseX, mouseY;//For access.
-	private float keyQ, keyE;//For access.
-	public float camPivotXSpeed = 2f;//Speed of X at which camera pivots when used.
-	public float camPivotYSpeed = 2f;//Speed of Y at which camera pivots when used.
-
-	private float zoom;//Default zoom.
-	public float zoomSpeed = 4f;//Speed of Z at which each time the zoom wheel is turned.
-	public float zoomMin = -0f;//Minimum value that camera Z zooms out.
-	public float zoomMax = -10f;//Maxiumum value that camera Z zooms out.
 
 	//public float rotationSpeed = 5f;//For SLERPING (Although needs to be put on PC + PC SCRIPT). ***Not implemented***
 
 	// Use this for initialization
 	void Start () {
 
-		zoom = -0f;//starting Z point on transform.
+		playerScript = FindObjectOfType<Player> ();
 
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
-		zoom += Input.GetAxis ("Mouse ScrollWheel") * zoomSpeed;//Assigns scrollwheel to zoom + with zoomspeed.
+		//1st Person
 
-		if (zoom > zoomMin)
-			zoom = zoomMin;//Doesn't go any lower than minimum.
+			pcCam.LookAt (playerScript.rayHitPcLook.point);//Camera looks
 
-		if (zoom < zoomMax)
-			zoom = zoomMax;//Doesn't go any lower than maximum.
+			mouseX += Input.GetAxisRaw ("Mouse X");//Axis for x.
+			mouseY -= Input.GetAxisRaw ("Mouse Y");//Axis for y.
 
-		pcCam.transform.localPosition = new Vector3 (0, 0, zoom);//Sets up main camera Z axis to use zoom.
-
-		//DOWN FROM HERE IS THE POINT TO USE FOR SETTING UP LIGHT/MED/HEAVY ATTACKS!!!
-
-		if (Input.GetMouseButton (2))//Middle Mouse button push.
-		{
-			mouseX += Input.GetAxis ("Mouse X") * camPivotXSpeed;//Axis for x.
-			mouseY -= Input.GetAxis ("Mouse Y") * camPivotYSpeed;//Axis for y.
-		}
-
-		mouseY = Mathf.Clamp (mouseY, -60f, 75f);//creates a min/max clamp for y.
-		pcCam.LookAt (pcCenterPoint);//Main Camera is always looking at center point object.
 		pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX, 0); //RIGHT HERE!!! Change the 0 to Z and you've got something special for the attacking.
 
-		//For Pivoting with Q and E:
-		if (Input.GetKey ("q"))// Q button push.
-		{
-			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX += 0.75f * camPivotXSpeed, 0);
-		}
-		if (Input.GetKey ("e"))// E button push.
-		{
-			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX -= 0.75f * camPivotXSpeed, 0);
-		}
-
-		//QUICK NOTE: Quaternions are used for rotation instead of Vector3s.
-
-		//ABOVE FROM HERE IS THE POINT TO USE FOR SETTING UP LIGHT/MED/HEAVY ATTACKS!!!
-
-		pcCenterPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y + centerPointYPosition, pcCharacter.position.z + 0.1f);//Makes Center Point follow the PC, effectively making the Camera follow the Center Point.
+		pcCenterPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y + centerPointYPosition, pcCharacter.position.z);//Makes Center Point follow the PC, effectively making the Camera follow the Center Point.
 
 		//Motion Point, into player movement direction.
 		pcMotionPoint.position = new Vector3 (pcCharacter.position.x, pcCharacter.position.y, pcCharacter.position.z);//Makes Motion Point follow the PC.
@@ -79,5 +47,10 @@ public class FirstPersonPlayerCamera : MonoBehaviour {
 			pcCharacter.rotation = Quaternion.Slerp (pcCharacter.rotation, turnAngle, Time.deltaTime * rotationSpeed);
 		}*/
 		//SLERP = Slows down the rotation, could be used for slowing down rotation movement, and for attacks?
+	}
+
+	void fixedUpdate ()
+	{
+
 	}
 }

@@ -7,7 +7,6 @@ public class ThirdPersonPlayerCamera : MonoBehaviour {
 	private Player playerScript;
 
 	public Transform pcCam, pcCharacter, pcCenterPoint, pcMotionPoint;
-	public Transform farPointAimerReach;
 
 	public float centerPointYPosition = 1.75f;
 
@@ -18,7 +17,7 @@ public class ThirdPersonPlayerCamera : MonoBehaviour {
 
 	private float zoom;//Default zoom.
 	public float zoomSpeed = 4f;//Speed of Z at which each time the zoom wheel is turned.
-	public float zoomMin = -1f;//Minimum value that camera Z zooms in.
+	public float zoomMin = -0.6f;//Minimum value that camera Z zooms in.
 	public float zoomMax = -10f;//Maxiumum value that camera Z zooms out.
 
 	//public float rotationSpeed = 5f;//For SLERPING (Although needs to be put on PC + PC SCRIPT). ***Not implemented***
@@ -55,11 +54,14 @@ public class ThirdPersonPlayerCamera : MonoBehaviour {
 			
 		mouseY = Mathf.Clamp (mouseY, -60f, 75f);//creates a min/max clamp for y.
 
+		//1st Person
+
 		if (Input.GetButton ("Cursor")) //When holding down Alt, you can play fps! *****NEEDS WORK*****
 		{
-			pcCam.LookAt (playerScript.rayHitPcLook.point);//NEEDS TO CHANGE TO RAYHIT
-			mouseX += Input.GetAxisRaw ("Mouse X");//Axis for x.
-			mouseY -= Input.GetAxisRaw ("Mouse Y");//Axis for y.
+			//viewCamera (which is in the player script) needs to be accessed here, to become 1st person camera, so all the rays go from it. It might just work.
+			pcCam.LookAt (playerScript.rayHitPcLook.point);//Camera looks
+			mouseX += Input.GetAxis ("Mouse X");//Axis for x.
+			mouseY -= Input.GetAxis ("Mouse Y");//Axis for y.
 		}
 		else
 		{
@@ -69,11 +71,11 @@ public class ThirdPersonPlayerCamera : MonoBehaviour {
 		pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX, 0); //RIGHT HERE!!! Change the 0 to Z and you've got something special for the attacking.
 
 		//For Pivoting with Q and E:
-		if (Input.GetKey ("q"))// Q button push.
+		if (Input.GetKey ("e"))// Q button push.
 		{
 			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX += 0.75f * camPivotXSpeed, 0);
 		}
-		if (Input.GetKey ("e"))// E button push.
+		if (Input.GetKey ("q"))// E button push.
 		{
 			pcCenterPoint.localRotation = Quaternion.Euler (mouseY, mouseX -= 0.75f * camPivotXSpeed, 0);
 		}

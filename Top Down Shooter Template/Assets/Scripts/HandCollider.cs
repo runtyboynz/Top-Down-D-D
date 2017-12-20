@@ -16,11 +16,12 @@ public class HandCollider : MonoBehaviour
 		
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter (Collision collisionInfo)
 	{
-		if (other.tag == "PC1BodyColliderTag") 
+		Debug.Log (collisionInfo.collider.name);
+		/*if (other.tag == "PC1BodyColliderTag") 
 		{
 			Debug.Log ("Touch");
-		}
+		}*/
 	}
 }

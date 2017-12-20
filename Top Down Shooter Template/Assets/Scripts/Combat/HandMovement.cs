@@ -5,6 +5,8 @@ using UnityEngine;
 public class HandMovement : MonoBehaviour 
 {
 
+	private Player playerScript;
+
 	public Transform farPointAimerReachRH, farPointAimerReachLH, combatAimer;
 	public Transform handMovementRH, handMovementLH;
 
@@ -18,8 +20,8 @@ public class HandMovement : MonoBehaviour
 
 				if (Input.GetMouseButton(1))//If right mouse button is pushed down, shoot 
 		{
-			float x = -farPointAimerReachRH.transform.localPosition.x / 8;//moves opposite of x
-			float y = -farPointAimerReachRH.transform.localPosition.z / 8;//z axis moves on the y axis opposingly
+			float x = farPointAimerReachRH.transform.localPosition.x * 2;//moves opposite of x
+			float y = -farPointAimerReachRH.transform.localPosition.z * 4;//z axis moves on the y axis opposingly
 			float z = 0;//default. The below equations make it move with the above axis.
 
 			//Sets restrictions for hand/arm movement distance.
@@ -56,8 +58,8 @@ public class HandMovement : MonoBehaviour
 		}
 				if (Input.GetMouseButton(0))//If left mouse button is pushed down, shoot 
 		{
-			float x = -farPointAimerReachLH.transform.localPosition.x / 8;//moves opposite of x
-			float y = -farPointAimerReachLH.transform.localPosition.z / 8;//z axis moves on the y axis opposingly
+			float x = farPointAimerReachLH.transform.localPosition.x * 2;//moves opposite of x
+			float y = -farPointAimerReachLH.transform.localPosition.z * 4;//z axis moves on the y axis opposingly
 			float z = 0;//default. The below equations make it move with the above axis.
 
 
